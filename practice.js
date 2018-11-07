@@ -17,7 +17,9 @@ var arr = [10,20,30];
   Return the first item in the given array.
 */
 
-//Code Here
+function first(arr){
+  return arr[0];
+}
 
 
 
@@ -32,7 +34,9 @@ var arr = [40,50,60];
   Return the last item in the given array.
 */
 
-//Code Here
+function last(arr) {
+  return arr.pop();
+}
 
 
 
@@ -47,7 +51,9 @@ var family = ['Tyler', 'Jordyn', 'Ryan', 'Chelsey', 'Ireland'];
   Loop through the given array and alert every item in the array.
 */
 
-//Code Here
+function looper(family) {
+  family.forEach(person => alert(person));
+}
 
 
 
@@ -62,7 +68,11 @@ var letters = ['A', 'B', 'C', 'D', 'E'];
   Loop through the given array backwards alerting every item in the array starting at the end.\
 */
 
-//Code Here
+function reversedLooper(letters) {
+  for(let i = letters.length - 1; i>=0; i--) {
+    alert(letters[i]);
+  }
+}
 
 
 
@@ -77,22 +87,18 @@ var nums = [1,2,3,6,22,98,45,23,22,12];
   Return an array that contains the even numbers from the nums array.
 */
 
-//Code Here
-
-
-
-
-
-
+function evenFinder(nums) {
+  let newArray = [];
+  for(let i=0; i<nums.length; i++) {
+    if(nums[i] % 2 === 0) {
+      newArray.push(nums[i]);
+    }
+  }
+  return newArray;
+}
 
 /////////////////////// EXTRA PRACTICE PROBLEMS BELOW ////////////////////
 ////////// MOVE ONTO NEXT SECTION BEFORE WORKING ON THESE ////////////////
-
-
-
-
-
-
 
 ////////// PROBLEM 6 //////////
 
@@ -105,7 +111,20 @@ var numbersArray = [1,2,34,54,55,34,32,11,19,17,54,66,13];
   Have divider return an Array with the first item in the array being the evens array (all the even values from numbersArray) and the second item in the Array being the odds array (all the odd values from numbersArray).
 */
 
-//Code Here
+function divider(numbersArray) {
+  var odds = [];
+  var evens = [];
+  var both = [];
+  for(let i=0; i<numbersArray.length; i++) {
+    if(numbersArray[i] % 2 === 0) {
+      evens.push(numbersArray[i]);
+    } else {
+      odds.push(numbersArray[i]); 
+    }
+  }
+  both.push(evens, odds);
+  return both;
+}
 
 
 
@@ -119,16 +138,22 @@ var getRandomArbitrary = function() {
 
 /* 
   var numbers = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
-  Above you're given a function that will return a random number between 0 and 30. There is also a commented out array full of numbers to help you visualize what your function will be receiving.
+  Above you're given a function that will return a random number between 0 and 30. 
+  There is also a commented out array full of numbers to help you visualize what your function will be receiving.
   Write a function named finder that will take in an array as an argument.
   It will then  get a random number (by invoking getRandomArbitrary).
   Loop through the array to see if that random number is in the array. 
   If it is, return true, if it's not, return false
 */
 
-//Code Here
-
-
+function finder(array) {
+  var randomNumber = getRandomArbitrary();
+  if (array.includes(randomNumber)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 ////////// PROBLEM 8 //////////
 
@@ -140,9 +165,11 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   Here we're going to write a function that mimics going shopping and checking things off of our grocery list and adding new items to our list.
 
   Write a function called removeItem that is given two arguments, the first is myGroceryList, and the second is an item to remove from myGroceryList. 
-  If the second argument (or the item to add or remove) matches an item in myGroceryList, remove that item from the your grocery list and return the new, updated grocery list.
+  If the second argument (or the item to add or remove) matches an item in myGroceryList, remove that item from the your grocery list and return the new, 
+  updated grocery list.
 
-  Once you do that, write another function called addItem that is given two arguments, the first is myGroceryList and the second is an item to add to your grocery list. 
+  Once you do that, write another function called addItem that is given two arguments, 
+  the first is myGroceryList and the second is an item to add to your grocery list. 
   In addItem add the item you passed in to myGroceryList then return the new, updated grocery list.
 
   In both removeItem and addItem check to see if the 'myGroceryList' and 'item' arguments are truthy.
@@ -155,9 +182,30 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   addItem() --> [];
 */
 
-//Code Here
+function removeItem(myGroceryList, itemToRemove) {
+  let newArray = [];
+  if(!myGroceryList || !itemToRemove) {
+    return newArray;
+  } else {
+    for(let i=0; i<myGroceryList.length; i++) {
+      if(myGroceryList[i] !== itemToRemove) {
+        newArray.push(myGroceryList[i]);
 
+      }
+    } 
+  }
+  return newArray;
+}
 
+function addItem(myGroceryList, itemToAdd) {
+    let newArray = [];
+  if(!myGroceryList || !itemToAdd) {
+    return newArray;
+  } else {
+    myGroceryList.push(itemToAdd);
+  }
+  return myGroceryList;
+}
 
 ////////// PROBLEM 9 //////////
 
@@ -165,7 +213,13 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   Write a function called maker that creates an array, fills that array with numbers from 1 to 215, then returns the array.
 */
 
-//Code Here
+function maker() {
+  let array = [];
+  for(let i=1; i<216; i++) {
+    array.push(i);
+  }
+  return array;
+}
 
 
 
@@ -181,7 +235,9 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
   *Verify your answer is correct. --> [15, 19, 26, 29, 35, 44, 58]
 */
   
-//Code Here
+function addTen(numbers) {
+  return numbers.map(number => Number(number) + 10);
+}
 
 
 
@@ -206,7 +262,13 @@ for(var i = 0; i < num2; i++){
   Return the array which is longest.
 */
 
-//Code Here
+function longer(arr1,arr2) {
+  if(arr1.length > arr2.length) {
+    return arr1;
+  } else {
+    return arr2;
+  }
+}
 
 
 
@@ -218,8 +280,9 @@ for(var i = 0; i < num2; i++){
   Example: var arr1 = [1,2,3,4]; var arr2 = [2,4,5,6]; newArray // [2,4]
 */
 
-//Code Here
-
+function both(arr1,arr2) {
+  return arr1.filter(word => arr2.includes(word)); 
+}
 
 
 ////////// PROBLEM 12 //////////
@@ -258,7 +321,8 @@ var colt = {
   After that console.log the length of the Array and make sure that it's equal to 4. 
 */
 
-//Code Here
+devMountainEmployees.push(tyler, cahlan, ryan, colt);
+console.log(devMountainEmployees.length);
 
 
 
@@ -267,9 +331,7 @@ var colt = {
   Loop through your devMountainEmployees until you find cahlan, then remove him from the array.
 */
 
-//Code Here
-
-
+devMountainEmployees = devMountainEmployees.filter(person => person.name !== cahlan.name);
 
 ////////// PROBLEM 13 //////////
 
@@ -279,9 +341,7 @@ var colt = {
   Create an empty array called users.
 */
 
-//Code Here
-
-
+let users = [];
 
 /*
   Now add three user objects to your users array. Each user object should contain the following properties. name, email, password, username.
@@ -297,9 +357,22 @@ var user1 = {
     username: 'infiniteLoop'
 };
 // Do not edit the code above.
+var user2 = {
+  name: "Megan Shepherd",
+  email: "megan@test.com",
+  password: "lovescoding#",
+  username: "megan"
+}
 
-//Code Here
+// Do not edit the code above.
+var user3 = {
+  name: "Megan Shepherd",
+  email: "megan@test.com",
+  password: "lovescoding#",
+  username: "megan"
+}
 
+users.push(user1, user2, user3);
 
 
 /*
@@ -312,7 +385,7 @@ var user1 = {
   Once you find the particular index he's located in, delete him from the array.
 */
 
-//Code Here
+users = users.filter(user => user.email !== "tylermcginnis33@gmail.com");
 
 
 
